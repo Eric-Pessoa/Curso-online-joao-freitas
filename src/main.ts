@@ -1,4 +1,3 @@
-import './assets/main.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
@@ -8,11 +7,21 @@ import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+//Material icons
+import { aliases, md } from 'vuetify/iconsets/md'
+//Components
 import AppHeader from './components/Header/AppHeader.vue'
 
 const vuetify = createVuetify({
     components,
     directives,
+    icons: {
+      defaultSet: 'md',
+      aliases,
+      sets: {
+        md,
+      },
+    },
   })
 
 //Instantiate routes, vuetify and pinia

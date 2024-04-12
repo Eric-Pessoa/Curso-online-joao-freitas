@@ -1,15 +1,15 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-const greeting = ref('Hello World!')
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <p class="greeting">{{ greeting }}</p>
+  <v-app-bar color="#035E7B" :absolute="true" :elevation="2">
+    <template v-slot:prepend>
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    </template>
+    <v-app-bar-title>Espaço da música</v-app-bar-title>
+    <v-btn icon>
+      <v-icon>mdi-logout</v-icon>
+    </v-btn>
+  </v-app-bar>
 </template>
 
-<style>
-.greeting {
-  color: red;
-  font-weight: bold;
-}
-</style>
+<style></style>
