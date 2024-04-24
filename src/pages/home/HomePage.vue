@@ -14,11 +14,10 @@ const mockedListLessons = ref([
   { title: 'aula 10', subtitle: '10 subtítulo' },
   { title: 'aula 11', subtitle: '11 subtítulo' },
   { title: 'aula 12', subtitle: '12 subtítulo' },
-  { title: 'aula 13', subtitle: '13 subtítulo' },
+  { title: 'aula 13', subtitle: '13 subtítulo' }
 ])
 
 const pageSize = 6
-
 const pagedAssets = computed(() => {
   // get the start index for your paged result set.
   // The page number starts at 1 so the active item in the pagination is displayed properly.
@@ -29,9 +28,7 @@ const pagedAssets = computed(() => {
   // only return the data for the current page using splice
   return data.splice(startIndex, pageSize)
 })
-
 const paginatorModel = ref(1)
-
 const TotalPaginatorPages = computed(() => {
   return Math.ceil(mockedListLessons.value.length / 6)
 })
@@ -41,7 +38,7 @@ const TotalPaginatorPages = computed(() => {
   <div id="main-container">
     <div id="video-player">div 1</div>
     <div id="video-toolbar">
-      <div id="title">Teste</div>
+      <div id="title">Violão básico</div>
       <div id="lessons-list">
         <v-list lines="two">
           <v-list-item
@@ -56,7 +53,6 @@ const TotalPaginatorPages = computed(() => {
         id="paginator"
         v-model="paginatorModel"
         :length="TotalPaginatorPages"
-        :total-visible="2"
         ellipsis="•••"
       ></v-pagination>
     </div>
@@ -78,7 +74,6 @@ const TotalPaginatorPages = computed(() => {
     justify-content: center;
     align-items: center;
     flex: 3 2 600px;
-    background-color: maroon;
     border-radius: 15px;
   }
   #video-toolbar {
@@ -86,29 +81,41 @@ const TotalPaginatorPages = computed(() => {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    flex: 1 1 300px;
-    background-color: green;
+    flex: 1 0 250px;
+    min-width: 350px;
+    background-color: #f9f1f1;
     border-radius: 15px;
     #title {
       display: flex;
       justify-content: center;
       align-items: center;
+      font-family: 'Montserrat';
+      font-size: 20px;
       border-radius: 15px 15px 0 0;
       width: 100%;
       height: 50px;
-      background-color: mediumslateblue;
+      background-color: #035e7b;
+      color: #f9f1f1;
     }
     #lessons-list {
       width: 100%;
+      .v-list {
+        padding: 0;
+        .v-list-item {
+          background-color: #f9f1f1;
+          font-family: 'Montserrat';
+        }
+      }
     }
     #paginator {
       display: flex;
       width: 100%;
       height: 50px;
-      background-color: mediumslateblue;
+      background-color: #035e7b;
       border-radius: 0 0 15px 15px;
       justify-content: center;
       align-items: center;
+      color: #f9f1f1;
     }
   }
 }
