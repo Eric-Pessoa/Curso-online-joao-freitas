@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const mockedListLessons = ref([
   { title: 'aula 1', subtitle: '1 subtítulo' },
@@ -14,9 +14,27 @@ const mockedListLessons = ref([
   { title: 'aula 10', subtitle: '10 subtítulo' },
   { title: 'aula 11', subtitle: '11 subtítulo' },
   { title: 'aula 12', subtitle: '12 subtítulo' },
+  { title: 'aula 13', subtitle: '13 subtítulo' },
 ])
 
-const paginatorModel = ref(1);
+const pageSize = 6
+
+const pagedAssets = computed(() => {
+  // get the start index for your paged result set.
+  // The page number starts at 1 so the active item in the pagination is displayed properly.
+  // However for our calculation the page number must start at (n-1)
+  const startIndex = (paginatorModel.value - 1) * pageSize
+  // create a copy of your assets list so we don't modify the original data set
+  const data = [...mockedListLessons.value]
+  // only return the data for the current page using splice
+  return data.splice(startIndex, pageSize)
+})
+
+const paginatorModel = ref(1)
+
+const TotalPaginatorPages = computed(() => {
+  return Math.ceil(mockedListLessons.value.length / 6)
+})
 </script>
 
 <template>
@@ -27,16 +45,20 @@ const paginatorModel = ref(1);
       <div id="lessons-list">
         <v-list lines="two">
           <v-list-item
-            v-for="n in mockedListLessons"
+            v-for="n in pagedAssets"
             :key="n.title"
             :title="n.title"
             :subtitle="n.subtitle"
           ></v-list-item>
         </v-list>
       </div>
-      <div id="paginator">
-        <v-pagination v-model="paginatorModel" :length="2" show-first-last-page></v-pagination>
-      </div>
+      <v-pagination
+        id="paginator"
+        v-model="paginatorModel"
+        :length="TotalPaginatorPages"
+        :total-visible="2"
+        ellipsis="•••"
+      ></v-pagination>
     </div>
   </div>
 </template>
