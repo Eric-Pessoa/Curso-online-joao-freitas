@@ -33,6 +33,7 @@ const mockedListLessons = ref([
           ></v-list-item>
         </v-list>
       </div>
+      <div id="footer"></div>
     </div>
   </div>
 </template>
@@ -61,6 +62,7 @@ const mockedListLessons = ref([
     align-items: center;
     flex: 1 0 250px;
     min-width: 350px;
+    max-height: 720px;
     background-color: #f9f1f1;
     border-radius: 15px;
     #title {
@@ -71,12 +73,14 @@ const mockedListLessons = ref([
       font-size: 20px;
       border-radius: 15px 15px 0 0;
       width: 100%;
-      height: 50px;
+      height: 40px;
       background-color: #035e7b;
       color: #f9f1f1;
     }
     #lessons-list {
       width: 100%;
+      flex: 1;
+      overflow-y: scroll;
       .v-list {
         padding: 0;
         .v-list-item {
@@ -84,6 +88,13 @@ const mockedListLessons = ref([
           font-family: 'Montserrat';
         }
       }
+    }
+    #footer {
+      border-radius: 0 0 15px 15px;
+      width: 100%;
+      height: 40px;
+      background-color: #035e7b;
+      color: #f9f1f1;
     }
   }
 }

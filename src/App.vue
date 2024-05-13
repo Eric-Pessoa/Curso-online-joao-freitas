@@ -10,4 +10,7 @@ import AppHeader from './components/Header/AppHeader.vue'
 </template>
 
 <style scoped>
+.v-main {
+  height: 600px;
+}
 </style>
