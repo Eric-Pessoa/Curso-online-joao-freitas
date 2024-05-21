@@ -14,8 +14,11 @@ const mockedListLessons = ref([
   { title: 'aula 10', subtitle: '10 subtítulo' },
   { title: 'aula 11', subtitle: '11 subtítulo' },
   { title: 'aula 12', subtitle: '12 subtítulo' },
-  { title: 'aula 13', subtitle: '13 subtítulo' }
 ])
+
+function clickLesson(videoTitle: string) {
+  console.log(videoTitle)
+}
 </script>
 
 <template>
@@ -30,6 +33,7 @@ const mockedListLessons = ref([
             :key="n.title"
             :title="n.title"
             :subtitle="n.subtitle"
+            @click="clickLesson(n.title)"
           ></v-list-item>
         </v-list>
       </div>
