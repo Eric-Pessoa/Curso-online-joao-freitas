@@ -13,7 +13,7 @@ const mockedListLessons = ref([
   { title: 'aula 9', subtitle: '9 subtítulo' },
   { title: 'aula 10', subtitle: '10 subtítulo' },
   { title: 'aula 11', subtitle: '11 subtítulo' },
-  { title: 'aula 12', subtitle: '12 subtítulo' },
+  { title: 'aula 12', subtitle: '12 subtítulo' }
 ])
 
 function clickLesson(videoTitle: string) {
@@ -23,7 +23,13 @@ function clickLesson(videoTitle: string) {
 
 <template>
   <div id="main-container">
-    <div id="video-player">div 1</div>
+    <div id="video-player">
+      <video class="video-player-window" controls>
+        <source src="movie.mp4" type="video/mp4" />
+        <source src="movie.ogg" type="video/ogg" />
+        Seu navegador não suporta a funcionalidade de vídeo.
+      </video>
+    </div>
     <div id="video-toolbar">
       <div id="title">Violão básico</div>
       <div id="lessons-list">
@@ -58,6 +64,11 @@ function clickLesson(videoTitle: string) {
     align-items: center;
     flex: 3 2 600px;
     border-radius: 15px;
+    .video-player-window {
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+    }
   }
   #video-toolbar {
     display: flex;
