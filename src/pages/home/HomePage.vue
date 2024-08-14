@@ -23,27 +23,38 @@ function clickLesson(videoTitle: string) {
 
 <template>
   <div class="main-container">
-    <div class="video-player">
-      <video class="video-player-window" controls>
-        <source src="movie.mp4" type="video/mp4" />
-        <source src="movie.ogg" type="video/ogg" />
-        Seu navegador não suporta a funcionalidade de vídeo.
-      </video>
-    </div>
-    <div class="video-toolbar">
-      <div class="title">Violão básico</div>
-      <div class="lessons-list">
-        <v-list lines="two">
-          <v-list-item
-            v-for="n in mockedListLessons"
-            :key="n.title"
-            :title="n.title"
-            :subtitle="n.subtitle"
-            @click="clickLesson(n.title)"
-          ></v-list-item>
-        </v-list>
+    <div class="video-and-lessons">
+      <div class="video-player">
+        <video class="video-player-window" controls>
+          <source src="movie.mp4" type="video/mp4" />
+          <source src="movie.ogg" type="video/ogg" />
+          Seu navegador não suporta a funcionalidade de vídeo.
+        </video>
       </div>
-      <div class="footer"></div>
+      <div class="video-toolbar">
+        <div class="title">Violão básico</div>
+        <div class="lessons-list">
+          <v-list lines="two">
+            <v-list-item
+              v-for="n in mockedListLessons"
+              :key="n.title"
+              :title="n.title"
+              :subtitle="n.subtitle"
+              @click="clickLesson(n.title)"
+            ></v-list-item>
+          </v-list>
+        </div>
+        <div class="footer"></div>
+      </div>
+    </div>
+    <div class="lesson-info">
+      <h1>Acordes</h1>
+      <div>
+        <ins width="300px" height="200px" class="scales_chords_api" chord="D#m(maj9)"></ins>
+        <ins width="300px" height="200px" class="scales_chords_api" chord="D#m(maj9)"></ins>
+        <ins width="300px" height="200px" class="scales_chords_api" chord="D#m(maj9)"></ins>
+        <ins width="300px" height="200px" class="scales_chords_api" chord="D#m(maj9)"></ins>
+      </div>
     </div>
   </div>
 </template>
@@ -51,64 +62,79 @@ function clickLesson(videoTitle: string) {
 <style scoped>
 .main-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
   height: 100%;
   width: 100%;
+  background-color: white;
   padding: 15px;
-  background-color: #ededed;
-  column-gap: 10px;
-  .video-player {
+  .video-and-lessons {
     display: flex;
-    flex: 3 2 600px;
-    border-radius: 15px;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 70%;
+    width: 100%;
+    min-height: 520px;
     max-height: 968px;
-    .video-player-window {
-      width: 100%;
-      height: 100%;
-      border-radius: inherit;
-    }
-  }
-  .video-toolbar {
-    display: flex;
-    flex-direction: column;
-    flex: 1 0 250px;
-    min-width: 500px;
-    max-width: 500px;
-    max-height: 968px;
-    background-color: #f9f1f1;
-    border-radius: 15px;
-    .title {
+    column-gap: 10px;
+    .video-player {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Montserrat';
-      font-size: 24px;
-      font-weight: 600;
-      border-radius: 15px 15px 0 0;
       width: 100%;
-      height: 40px;
-      background-color: #035e7b;
-      color: #f9f1f1;
-    }
-    .lessons-list {
-      width: 100%;
-      flex: 1;
-      overflow-y: scroll;
-      .v-list {
-        padding: 0;
-        .v-list-item {
-          background-color: #f9f1f1;
-          font-family: 'Montserrat';
-        }
+      border-radius: 15px;
+      max-height: 968px;
+      .video-player-window {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
       }
     }
-    .footer {
-      border-radius: 0 0 15px 15px;
-      width: 100%;
-      height: 40px;
-      background-color: #035e7b;
+    .video-toolbar {
+      display: flex;
+      flex-direction: column;
+      min-width: 500px;
+      max-width: 500px;
+      min-height: 520px;
+      max-height: 968px;
+      background-color: #f9f1f1;
+      border-radius: 15px;
+      .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Montserrat';
+        font-size: 24px;
+        font-weight: 600;
+        border-radius: 15px 15px 0 0;
+        width: 100%;
+        height: 40px;
+        background-color: #035e7b;
+        color: #f9f1f1;
+      }
+      .lessons-list {
+        width: 100%;
+        flex: 1;
+        overflow-y: scroll;
+        .v-list {
+          padding: 0;
+          .v-list-item {
+            background-color: #f9f1f1;
+            font-family: 'Montserrat';
+          }
+        }
+      }
+      .footer {
+        border-radius: 0 0 15px 15px;
+        width: 100%;
+        height: 40px;
+        background-color: #035e7b;
+      }
     }
+  }
+  .lesson-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 30%;
   }
 }
 </style>
