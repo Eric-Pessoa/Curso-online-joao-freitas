@@ -62,6 +62,7 @@ function clickLesson(videoTitle: string) {
     display: flex;
     flex: 3 2 600px;
     border-radius: 15px;
+    max-height: 968px;
     .video-player-window {
       width: 100%;
       height: 100%;
@@ -71,11 +72,10 @@ function clickLesson(videoTitle: string) {
   .video-toolbar {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between;
-    align-items: center; */
     flex: 1 0 250px;
-    min-width: 350px;
-    max-height: 720px;
+    min-width: 500px;
+    max-width: 500px;
+    max-height: 968px;
     background-color: #f9f1f1;
     border-radius: 15px;
     .title {
@@ -83,7 +83,8 @@ function clickLesson(videoTitle: string) {
       justify-content: center;
       align-items: center;
       font-family: 'Montserrat';
-      font-size: 20px;
+      font-size: 24px;
+      font-weight: 600;
       border-radius: 15px 15px 0 0;
       width: 100%;
       height: 40px;
